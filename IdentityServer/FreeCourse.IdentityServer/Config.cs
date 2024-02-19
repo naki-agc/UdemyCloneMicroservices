@@ -66,8 +66,8 @@ namespace FreeCourse.IdentityServer
                     AllowedScopes={
                         IdentityServerConstants.StandardScopes.Email , IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile, IdentityServerConstants.StandardScopes.OfflineAccess, //OfflineAccess => refreshtoken yani
-                        "roles"
-                        
+                        IdentityServerConstants.LocalApi.ScopeName,"roles"
+
                     },
                     AccessTokenLifetime=1*60*60,
                     RefreshTokenExpiration=TokenExpiration.Absolute,
