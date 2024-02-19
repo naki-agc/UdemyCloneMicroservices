@@ -35,17 +35,19 @@ namespace FreeCourse.Services.Catalog
                 options.Authority = Configuration["IdentityServerURL"];
                 options.Audience = "resource_catalog";
                 options.RequireHttpsMetadata = false;
-            });
+            }); 
 
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ICourseService, CourseService>();
 
             services.AddAutoMapper(typeof(Startup));
-            services.AddControllers(opt =>
-            {
-                opt.Filters.Add(new AuthorizeFilter());
-            });
+            services.AddControllers();
+            //opt =>
+            //{
+            //    opt.Filters.Add(new AuthorizeFilter());
+            //}
 
+            //AddControllersa bunun ekleyince postmande 401 hatasý dönüyor 41. videoda anlatýyor.!!! Burayý unutursan bu yazýyý oku!!!
 
             services.Configure<DatabaseSettings>(Configuration.GetSection("DatabaseSettings"));
 
