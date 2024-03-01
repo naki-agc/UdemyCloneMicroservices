@@ -4,9 +4,11 @@
 
 using IdentityServer4;
 using IdentityServer4.Models;
+using Microsoft.AspNetCore.DataProtection;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.Xml;
+using Secret = IdentityServer4.Models.Secret;
 
 namespace FreeCourse.IdentityServer
 {
@@ -16,7 +18,7 @@ namespace FreeCourse.IdentityServer
         public static IEnumerable<ApiResource> ApiResources => new ApiResource[]
             {
             new ApiResource("resource_catolog"){Scopes={"catalog_fullpermission"}},
-            new ApiResource("resource_photo_stock"){Scopes={"photo_stock_fullpermission"}},
+            new ApiResource("photo_stock_catolog"){Scopes={"photo_stock_fullpermission"}},
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
             };
 
