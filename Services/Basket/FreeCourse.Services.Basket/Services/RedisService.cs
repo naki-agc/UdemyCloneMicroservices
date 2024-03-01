@@ -18,7 +18,7 @@ namespace FreeCourse.Services.Basket.Services
 
 
         public void Connect() => _connectionMultiplexer = ConnectionMultiplexer.Connect($"{_host}:{_port}");
-        public IDatabase GetDb(int db = 1)=> _connectionMultiplexer.GetDatabase(db);
+        public IDatabase GetDb(int db = 1)=> _connectionMultiplexer.GetDatabase(db);  //redisin 1 2 3 olarak içerdiği sayılar bu sınıf içerisinde mevcutlarmıi
 
 
     }
