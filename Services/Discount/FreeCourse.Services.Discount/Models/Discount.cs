@@ -13,3 +13,4 @@ namespace FreeCourse.Services.Discount.Models
         public DateTime CreatedTime { get; set; }
     }
 }
+ 
