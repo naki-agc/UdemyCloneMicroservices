@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace FreeCourse.Services.Discount.Services
 {
-    public interface IDıscountService
+    public interface IDiscountService
     {
         Task<Response<List<Models.Discount>>> GetAll();  //Models.Discount dedik çümkü namespacede sıkıntı yaratıyordu isimden 
 

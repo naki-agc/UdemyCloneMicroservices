@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FreeCourse.Services.Discount.Services
 {
-    public class DiscountService : IDıscountService
+    public class DiscountService : IDiscountService
     {
 
         private readonly IConfiguration _configuration;

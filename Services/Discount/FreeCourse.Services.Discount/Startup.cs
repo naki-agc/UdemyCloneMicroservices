@@ -1,3 +1,5 @@
+using FreeCourse.Services.Discount.Services;
+using FreeCourse.Shared.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -8,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Logging;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
@@ -29,6 +32,11 @@ namespace FreeCourse.Services.Discount
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddHttpContextAccessor();//ISharedIdentityServiceden gelen client idyi bulmasý için bunu ekliyoruz
+            services.AddScoped<ISharedIdentityService, SharedIdentityService>();
+            services.AddScoped<IDiscountService, DiscountService>();
+
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub");//bu subý maplemesin yani nameÝdentifier olarak gelmesinde sub olarak gelmesi için bunu yazdýk.
 
             var requireAuthorizePolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
@@ -48,6 +56,8 @@ namespace FreeCourse.Services.Discount
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FreeCourse.Services.Discount", Version = "v1" });
             });
+
+            IdentityModelEventSource.ShowPII = true;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
