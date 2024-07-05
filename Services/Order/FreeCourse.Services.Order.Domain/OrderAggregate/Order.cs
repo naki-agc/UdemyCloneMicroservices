@@ -21,6 +21,7 @@ namespace FreeCourse.Services.Order.Domain.OrderAggregate
         //birbirine kapsülledim
         public IReadOnlyCollection<OrderItem> OrderItems => _orderItems;
 
+        public Order() { }
 
         //order üretmek için bir constructer aşağıdadır.
         public Order(string buyerId,Address address)
@@ -32,7 +33,7 @@ namespace FreeCourse.Services.Order.Domain.OrderAggregate
 
 
 
-        public void AddOrderItem(string productId,string productName, string pictureUrl, decimal price)
+        public void AddOrderItem(string productId,string productName, decimal price, string pictureUrl)
         {
             var existProduct = _orderItems.Any(x=> x.ProductId == productId);
 
