@@ -29,6 +29,7 @@ namespace FreeCourse.Services.Order.Domain.OrderAggregate
             _orderItems = new List<OrderItem>();
             CreatedDate = DateTime.Now;
             BuyerId = buyerId;
+            Address = address;
         }
 
 
