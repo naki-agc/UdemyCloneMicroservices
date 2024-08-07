@@ -1,9 +1,89 @@
 {
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information",
-      "Microsoft.AspNetCore": "Warning"
+   "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/{everything}", // 2.) sonra uptan downa gelecek hangi microserviceyse ona yönlendirecek
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5011
+        }
+      ],
+      "UpstreamPathTemplate": "/services/catalog/{everything}", // 1.) ilk önce upa clientten gelecek catolog/{everything}bundan sonra ne geliyorsa ona gönder demek ocelota ait bir özellik
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "UpstreamScheme": "http"
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}", // 2.) sonra uptan downa gelecek hangi microserviceyse ona yönlendirecek
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5012
+        }
+      ],
+      "UpstreamPathTemplate": "/services/photostock/{everything}", // 1.) ilk önce upa clientten gelecek catolog/{everything}bundan sonra ne geliyorsa ona gönder demek ocelota ait bir özellik
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "UpstreamScheme": "http"
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}", // 2.) sonra uptan downa gelecek hangi microserviceyse ona yönlendirecek
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5013
+        }
+      ],
+      "UpstreamPathTemplate": "/services/basket/{everything}", // 1.) ilk önce upa clientten gelecek catolog/{everything}bundan sonra ne geliyorsa ona gönder demek ocelota ait bir özellik
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "UpstreamScheme": "http"
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}", // 2.) sonra uptan downa gelecek hangi microserviceyse ona yönlendirecek
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5014
+        }
+      ],
+      "UpstreamPathTemplate": "/services/discount/{everything}", // 1.) ilk önce upa clientten gelecek catolog/{everything}bundan sonra ne geliyorsa ona gönder demek ocelota ait bir özellik
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "UpstreamScheme": "http"
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}", // 2.) sonra uptan downa gelecek hangi microserviceyse ona yönlendirecek
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5015
+        }
+      ],
+      "UpstreamPathTemplate": "/services/order/{everything}", // 1.) ilk önce upa clientten gelecek catolog/{everything}bundan sonra ne geliyorsa ona gönder demek ocelota ait bir özellik
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "UpstreamScheme": "http"
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}", // 2.) sonra uptan downa gelecek hangi microserviceyse ona yönlendirecek
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5016
+        }
+      ],
+      "UpstreamPathTemplate": "/services/fakepayment/{everything}", // 1.) ilk önce upa clientten gelecek catolog/{everything}bundan sonra ne geliyorsa ona gönder demek ocelota ait bir özellik
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "UpstreamScheme": "http"
     }
-  },
-  "AllowedHosts": "*"
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5000"
+  }
 }
+
+//  http://localhost:5000/services/catolog/courses/saveCourses  buraya ne gelirse
+  // aşağıya o gelir => " /courses/saveCourses "
+//  http://localhost:5011/api/courses/saveCourses
